@@ -1,0 +1,27 @@
+# ===== Core ML Stack =====
+# torch 和 torchvision 由 ZeroGPU 自动管理，不要写死版本
+
+# Stable Diffusion + LoRA
+diffusers==0.31.0
+transformers==4.46.3
+accelerate==1.1.1
+safetensors==0.4.5
+peft==0.13.2
+compel==2.0.3
+
+# huggingface_hub 版本必须 <1.0 以兼容 transformers 4.46.3
+huggingface-hub>=0.23.2,<1.0
+
+# Gradio 和 spaces 由 ZeroGPU 自动管理，不要写死版本
+
+# Core Utilities
+Pillow==11.0.0
+numpy==1.26.4
+python-dateutil==2.9.0.post0
+
+# For logging / error handling
+requests==2.32.3
+tqdm==4.66.5
+
+# Optional visualization/debugging
+matplotlib==3.9.2
