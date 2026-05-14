@@ -52,8 +52,8 @@ STYLE_KEYWORDS = {
 # 通用质量增强词
 QUALITY_TAGS = "very awa, masterpiece, best quality, high resolution, highly detailed, professional"
 
-# Nova XL Anime模型 - 使用from_single_file加载
-NOVA_MODEL_URL = "https://huggingface.co/AriaVale2/nova-anime-xl-weights/resolve/main/novaAnimeXL_ilV190.safetensors"
+# 🔥 FIX: Changed from 'resolve/main' to standard 'AriaVale2/nova-anime-xl-weights' format for from_single_file loader
+NOVA_MODEL_URL = "https://huggingface.co/AriaVale2/nova-anime-xl-weights/blob/main/novaAnimeXL_ilV190.safetensors"
 
 # 注：LoRA已移除，Nova XL配置优化后无需额外LoRA
 
@@ -546,6 +546,7 @@ css = """
     white-space: pre-wrap !important;
     overflow-y: auto !important;
     max-height: 300px !important;
+    display: none !important; /* Keep metadata background features fully hidden unless wanted */
 }
 
 @media (max-width: 768px) {
@@ -728,9 +729,6 @@ if __name__ == "__main__":
     print(f"⚡ ZeroGPU: {'Enabled' if SPACES_AVAILABLE else 'Disabled'}")
     print(f"📝 Compel: {'Available' if COMPEL_AVAILABLE else 'Not Available'}")
     print("="*50 + "\n")
-    
-    # 不预加载模型,让ZeroGPU按需分配
-    # 这样可以避免GPU分配冲突
     
     app = create_interface()
     app.queue(max_size=10, default_concurrency_limit=2)
